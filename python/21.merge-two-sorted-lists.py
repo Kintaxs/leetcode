@@ -11,4 +11,37 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        
+        begin = ListNode(0)
+        tmp = ListNode(0)
+
+        if(l1 == None):
+            return l2
+        elif(l2 == None):
+            return l1
+
+        if(l1.val < l2.val):
+            tmp = l1
+            l1 = l1.next
+            begin = tmp
+        else:
+            tmp = l2
+            l2 = l2.next
+            begin = tmp
+
+        while(1):
+
+            if(l1 == None):
+                tmp.next = l2
+                return begin
+            elif(l2 == None):
+                tmp.next = l1
+                return begin
+
+            if(l1.val < l2.val):
+                tmp.next = l1
+                tmp = l1
+                l1 = l1.next
+            else:
+                tmp.next = l2
+                tmp = l2
+                l2 = l2.next
